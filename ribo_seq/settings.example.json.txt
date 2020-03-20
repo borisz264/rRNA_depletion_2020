@@ -1,0 +1,36 @@
+[ input ]
+experiment_name = experiment_name
+fastq_dir = /PATH/to/FASTQ/
+fastq_gz_files = ["HNMCFBCXY_1_CCTGAG_1.fastq.gz", "HNMCFBCXY_1_GAACCC_1.fastq.gz"]
+sample_names = ["1_cushion_no_dep", "2_cushion_hot_elute"]
+
+[ trimming_parameters ]
+adaptor_3p_sequence = NNNNNNCACTCGGGCACCAAGGAC
+trim_5p = 4
+min_post_trimming_length = 10
+max_post_trimming_length = 51
+sequence_quality_cutoff = 10
+force_retrim = False
+
+[ mapping_parameters ]
+star_genome_dir = /PATH/to/gencode_hg38_STAR/
+star_ncrna_dir = /PATH/to/ncRNA_STAR/
+genome_sequence_dir = /PATH/to/gencode_genome_hg38_p10/
+ncrna_sequence_dir = /PATH/to/hg38_noncoding_subtraction/
+annotation_gtf_file = /PATH/to/gencode_hg38_p10_comprehensive/gencode.v26.primary_assembly.annotation.gtf
+rebuild_star_index = False
+star_index_sparsity = 2
+outfiltermultimapnmax = 20
+alignsjdboverhangmin = 1
+alignsjoverhangmin = 8
+force_remapping = False
+reads_reversed = False
+
+[ output_parameters ]
+comparison_read_cutoff = 128
+five_prime_p_offset = 12
+force_recount = False
+make_interactive_plots = True
+
+[ output ]
+results_dir = /PATH/to/new_output_directory/

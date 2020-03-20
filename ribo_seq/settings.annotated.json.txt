@@ -1,0 +1,38 @@
+[ input ]
+experiment_name = experiment_name
+fastq_dir = /PATH/to/FASTQ/
+#file names and sample names must be in same order
+fastq_gz_files = ["HNMCFBCXY_1_CCTGAG_1.fastq.gz", "HNMCFBCXY_1_GAACCC_1.fastq.gz"]
+sample_names = ["1_cushion_no_dep", "2_cushion_hot_elute"]
+
+[ trimming_parameters ]
+adaptor_3p_sequence = NNNNNNCACTCGGGCACCAAGGAC #this sequence will be trimmed from the 3' end of all of the reads
+trim_5p = 4 #nucleotides to trim from 5' end. Set to 0 if no trimming required
+min_post_trimming_length = 10 #reads outside of this range will not ber mapped
+max_post_trimming_length = 51
+sequence_quality_cutoff = 10
+force_retrim = False
+
+[ mapping_parameters ]
+star_genome_dir = /PATH/to/gencode_hg38_STAR/ #where the STAR indices will go
+star_ncrna_dir = /PATH/to/ncRNA_STAR/
+genome_sequence_dir = /PATH/to/gencode_genome_hg38_p10/ #where the source genomes FASTAs are
+ncrna_sequence_dir = /PATH/to/hg38_noncoding_subtraction/ #where the noncoding RNA FASTAs are
+annotation_gtf_file = /PATH/to/gencode_hg38_p10_comprehensive/gencode.v26.primary_assembly.annotation.gtf #Can get fgrom GENCODE or UCSC
+rebuild_star_index = False
+star_index_sparsity = 2 #RAM vs speed tradeoff, For Human genome, sparsity 1 requires >33Gb RAM, 2 >16Gb, 3 > 8, and so on.
+outfiltermultimapnmax = 20 #anything that maps to more than this many places is discarded. Only unique mappings are used for downstream analysis anyway
+alignsjdboverhangmin = 1
+alignsjoverhangmin = 8
+force_remapping = False
+reads_reversed = False #set this to true if your reads are expected to be the reverse-complement of the transcript sequence. We find this to be true for Illumina Tru-Seq kits.
+
+[ output_parameters ]
+comparison_read_cutoff = 128
+five_prime_p_offset = 12 #Distance from 5' end of reads to the P-site of the ribosome footprint
+force_recount = False
+make_interactive_plots = True
+
+[ output ]
+#the pipeline will make the following directory if it does not exist. Make sure it is seperate from your fastq files.
+results_dir = /PATH/to/new_output_directory/
