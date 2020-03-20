@@ -1,0 +1,46 @@
+[ input ]
+experiment_name = set2_depletion_test
+fastq_dir = /fastscratch/boris/5.047_dep_paper/20200319_rerun_for_github/FASTQ
+fastq_gz_files = ["set2_NEBNext_20_34.fastq.gz","set2_undepleted_20_34.fastq.gz","set2_NEBNext_20_60.fastq.gz","set2_undepleted_20_60.fastq.gz"]
+sample_names = ["NEBNext_20_34","undepleted_20_34","NEBNext_20_60","undepleted_20_60"]
+
+[ trimming_parameters ]
+deduplicate_reads = False
+adaptor_3p_sequence = NNNNNNCACTCGGGCACCAAGGAC
+trim_5p = 4
+min_post_trimming_length = 10
+max_post_trimming_length = 80
+sequence_quality_cutoff = 10
+force_retrim = False
+
+[ mapping_parameters ]
+transcriptome_mapping_only=False
+star_genome_dir = /home/boris/annotations/hg38/gencode_hg38_STAR/
+star_ncrna_dir = /home/boris/annotations/hg38/ncRNA_STAR/
+genome_sequence_dir = /home/boris/annotations/hg38/gencode_genome_hg38_p10/
+ncrna_sequence_dir = /home/boris/annotations/hg38/hg38_noncoding_subtraction/
+annotation_gtf_file = /home/boris/annotations/hg38/gencode_27_annotations/appris_principal_1_4_coding_longest_CDS_tx_sorted_reformat.gtf
+qc_annotation_gtf_file = /home/boris/annotations/hg38/gencode_27_annotations/gencode_comprehensive.v27.annotation.gtf.gz
+add_3_for_stop = True
+rebuild_star_index = False
+star_index_sparsity = 1
+unique_mapping_only = False
+outfiltermultimapnmax = 200
+outfiltermismatchnmax = 3
+alignsjdboverhangmin = 1
+alignsjoverhangmin = 3
+alignintronmax = 1000000
+force_remapping = False
+alignendstype = EndToEnd
+forbid_non_polya_soft_clip = True
+atail_purity_cutoff = 0.9
+reads_reversed = False
+
+[ output_parameters ]
+comparison_read_cutoff = 128
+five_prime_p_offset = 12
+force_recount = False
+make_interactive_plots = True
+
+[ output ]
+results_dir = /fastscratch/boris/5.047_dep_paper/20200319_rerun_for_github/outputs/set2_dep_test
